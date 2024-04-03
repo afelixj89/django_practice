@@ -10,3 +10,26 @@ class Dog(models.Model):
     def __str__(self):
         return self.name
     
+MEALS= (
+    ('B','Breakfast'),
+    ('L', 'Lunch'),
+    ('D', 'Dinner')
+
+
+
+
+)
+    
+
+class Feeding(models.Model): 
+    date = models.DateField()
+    meal = models.CharField(
+    max_length=1,
+        choices=MEALS,
+        default=MEALS[0][0]
+    )
+    cat = models.ForeignKey(Dog, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.get_meal_display()} on {self.date}"
+    
