@@ -29,7 +29,7 @@ class DogDetail(generics.RetrieveUpdateDestroyAPIView):
     toys_serializer = ToySerializer(toys_not_associated, many=True)
 
     return Response({
-        'cat': serializer.data,
+        'dog': serializer.data,
         'toys_not_associated': toys_serializer.data
     })
 
