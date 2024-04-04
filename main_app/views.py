@@ -80,3 +80,10 @@ class AddToyToDog(APIView):
     dog.toys.add(toy)
     return Response({'message': f'Toy {toy.name} added to Dog {dog.name}'})
 
+
+class RemoveToyFromDog(APIView):
+  def post(self, request, dog_id, toy_id):
+    dog = Dog.objects.get(id=dog_id)
+    toy = Toy.objects.get(id=toy_id)
+    dog.toys.remove(toy)
+    return Response({'message': f'Toy {toy.name} removed from Dog {dog.name}'})
